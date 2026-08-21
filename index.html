@@ -487,6 +487,46 @@
             line-height: 1.5;
         }
 
+        /* ========== ACCESS RIGHTS ========== */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .role-card {
+            background: var(--bg-alt);
+            border-top: 3px solid var(--accent);
+            padding: 32px 24px;
+        }
+
+        .role-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .role-list {
+            list-style: none;
+        }
+
+        .role-list li {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .role-list li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
         /* ========== REPORTING ========== */
         .reporting-intro {
             display: grid;
@@ -707,6 +747,7 @@
             .lifecycle-grid { grid-template-columns: 1fr; }
             .contracts-grid { grid-template-columns: 1fr; }
             .contracts-process { grid-template-columns: 1fr 1fr; }
+            .roles-grid { grid-template-columns: 1fr; }
             .reporting-principles { grid-template-columns: 1fr; }
             .access-table th, .access-table td { display: block; width: 100%; }
             .access-table th { border-bottom: none; padding-bottom: 8px; }
@@ -732,6 +773,7 @@
             <li><a href="#lifecycle">Цикл</a></li>
             <li><a href="#contracts">Договоры</a></li>
             <li><a href="#entities">Сущности</a></li>
+            <li><a href="#access">Права</a></li>
             <li><a href="#reporting">Отчётность</a></li>
             <li><a href="https://my.tk-soft.ru/page/proekty/ekonomika/" target="_blank" class="nav-cta">Вход в систему →</a></li>
         </ul>
@@ -947,6 +989,47 @@
                     <span class="entity-item">Этапы переторжки</span>
                     <span class="entity-item">Формирование отчета</span>
                     <span class="entity-item">Контроль дедлайнов</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ПРАВА ДОСТУПА -->
+<section class="section" id="access">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">Гибкие права доступа</h2>
+            <p class="section-subtitle">Система обеспечивает строгую конфиденциальность и защиту данных. Разграничение видимости настраивается на уровне стадий, сущностей и отдельных документов.</p>
+        </div>
+
+        <div class="access-layout fade-in">
+            <img src="assets/img/access.jpg" alt="Управление правами доступа" class="content-image" style="margin-bottom: 40px; max-height: 500px;">
+
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-header">Руководящий состав</div>
+                    <ul class="role-list">
+                        <li>Полный контроль всех проектов</li>
+                        <li>Доступ к сквозной экономике</li>
+                        <li>Глобальная аналитика и отчёты</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <div class="role-header">Инициаторы (РП)</div>
+                    <ul class="role-list">
+                        <li>Управление своими проектами</li>
+                        <li>Ограниченная видимость экономики</li>
+                        <li>Контроль задач своей команды</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <div class="role-header">Линейные сотрудники</div>
+                    <ul class="role-list">
+                        <li>Доступ только к своим задачам</li>
+                        <li>Видимость рабочей документации</li>
+                        <li>Полное скрытие финансовых данных</li>
+                    </ul>
                 </div>
             </div>
         </div>
