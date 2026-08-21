@@ -3,32 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Единое пространство управления проектами</title>
+    <title>Единое пространство управления проектами | Телекомсофт</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #3b82f6;
-            --accent: #06b6d4;
-            --accent-dark: #0891b2;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-            --gradient-3: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            --primary: #12224F;      /* Темно-синий корп */
+            --accent: #0044FF;       /* Яркий синий для акцентов/линий */
+            --text-dark: #1A1A1A;    /* Основной текст */
+            --text-gray: #555555;    /* Второстепенный текст */
+            --text-light: #888888;
+            --bg-main: #FFFFFF;      /* Белый фон */
+            --bg-alt: #F4F5F8;       /* Светло-серый фон для секций */
+            --border: #E5E7EB;
         }
 
         * {
@@ -43,28 +30,34 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--gray-800);
-            background: var(--gray-50);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-main);
             line-height: 1.6;
-            overflow-x: hidden;
+            font-size: 16px;
         }
 
-        /* ========== NAVIGATION ========== */
+        /* ========== ТИПОГРАФИКА ========== */
+        h1, h2, h3, h4 {
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--text-dark);
+        }
+
+        /* ========== НАВИГАЦИЯ ========== */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
+            background: var(--bg-main);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s ease;
         }
 
         .navbar.scrolled {
-            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .nav-container {
@@ -74,283 +67,162 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
-            height: 68px;
+            height: 70px;
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 700;
-            font-size: 1.15rem;
-            color: #fff;
+            font-size: 1.2rem;
+            color: var(--primary);
             text-decoration: none;
+            letter-spacing: -0.02em;
         }
 
         .nav-logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--gradient-2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="8" height="8" fill="currentColor"/><rect x="14" y="2" width="8" height="8" fill="currentColor"/><rect x="2" y="14" width="8" height="8" fill="currentColor"/><rect x="14" y="14" width="8" height="8" fill="currentColor"/></svg>') no-repeat center;
+            -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="8" height="8" fill="currentColor"/><rect x="14" y="2" width="8" height="8" fill="currentColor"/><rect x="2" y="14" width="8" height="8" fill="currentColor"/><rect x="14" y="14" width="8" height="8" fill="currentColor"/></svg>') no-repeat center;
         }
 
         .nav-links {
             display: flex;
-            gap: 6px;
+            gap: 24px;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--gray-300);
+            color: var(--text-gray);
             text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.2s;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: #fff;
-            background: rgba(255,255,255,0.08);
+            color: var(--accent);
         }
 
         .nav-cta {
-            background: var(--primary) !important;
-            color: #fff !important;
+            color: var(--accent) !important;
+            font-weight: 500;
         }
 
-        .nav-cta:hover {
-            background: var(--primary-dark) !important;
-        }
-
-        /* ========== HERO SECTION ========== */
+        /* ========== HERO ========== */
         .hero {
-            min-height: 100vh;
-            background: var(--gradient-3);
-            display: flex;
-            align-items: center;
+            padding: 160px 2rem 100px;
+            background: var(--bg-alt);
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid var(--border);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
-        }
-
+        /* Декоративный паттерн из пикселей как в презентации */
         .hero::after {
             content: '';
             position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-40px) scale(1.05); }
-        }
-
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+            right: 5%;
+            top: 20%;
+            width: 400px;
+            height: 400px;
+            background-image: radial-gradient(var(--text-light) 2px, transparent 2px);
+            background-size: 16px 16px;
+            opacity: 0.2;
+            z-index: 0;
         }
 
         .hero-content {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 120px 2rem 80px;
             position: relative;
-            z-index: 2;
+            z-index: 1;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 60px;
             align-items: center;
         }
 
         .hero-text h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            position: relative;
+            padding-bottom: 24px;
         }
 
-        .hero-text h1 span {
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* Синяя линия под заголовком */
+        .hero-text h1::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
         }
 
         .hero-text p {
-            font-size: 1.15rem;
-            color: var(--gray-400);
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            max-width: 520px;
-        }
-
-        .hero-badges {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.12);
-            color: var(--gray-300);
-            background: rgba(255,255,255,0.04);
-        }
-
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--success);
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 540px;
+            margin-top: 24px;
+            line-height: 1.6;
         }
 
         .hero-visual {
-            position: relative;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
         }
 
-        .hero-card-stack {
-            position: relative;
-            perspective: 1200px;
+        .hero-visual-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 24px;
         }
 
-        .hero-card {
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 28px;
-            margin-bottom: 16px;
-            transform: translateZ(0);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .hero-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .hero-card-header {
+        .hero-stat-list {
+            list-style: none;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .hero-card-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+        .hero-stat-item {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+            align-items: flex-start;
+            gap: 16px;
         }
 
-        .hero-card-title {
-            color: #fff;
-            font-weight: 600;
-            font-size: 1rem;
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            line-height: 1;
+            min-width: 60px;
         }
 
-        .hero-card-subtitle {
-            color: var(--gray-400);
-            font-size: 0.82rem;
+        .stat-text {
+            font-size: 0.95rem;
+            color: var(--text-dark);
         }
 
-        .hero-card-bar {
-            height: 6px;
-            border-radius: 3px;
-            background: rgba(255,255,255,0.08);
-            margin-top: 12px;
-            overflow: hidden;
-        }
-
-        .hero-card-bar-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 1.5s ease;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .hero-stat {
-            text-align: center;
-            padding: 16px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .hero-stat-number {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #fff;
-        }
-
-        .hero-stat-label {
-            font-size: 0.75rem;
-            color: var(--gray-400);
-            margin-top: 4px;
-        }
-
-        /* ========== SECTIONS COMMON ========== */
+        /* ========== ОБЩИЕ СЕКЦИИ ========== */
         .section {
             padding: 100px 2rem;
         }
 
-        .section-dark {
-            background: var(--gray-900);
-            color: #fff;
-        }
-
         .section-alt {
-            background: #fff;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .container {
@@ -359,1426 +231,655 @@
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 20px;
-            border-radius: 100px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 20px;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
-
-        .section-dark .section-label {
-            background: rgba(37, 99, 235, 0.2);
-            color: var(--primary-light);
-            border-color: rgba(37, 99, 235, 0.3);
+            margin-bottom: 60px;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2.2rem;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
             letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 18px;
         }
 
-        .section-dark .section-title {
-            color: #fff;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 48px;
+            height: 4px;
+            background: var(--accent);
         }
 
         .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray-500);
-            max-width: 640px;
-            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            max-width: 600px;
         }
 
-        .section-dark .section-subtitle {
-            color: var(--gray-400);
+        /* ========== ГОЛУБЫЕ НОМЕРА (СТИЛЬ ПРЕЗЕНТАЦИИ) ========== */
+        .blue-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
 
-        /* ========== GOALS SECTION ========== */
+        /* ========== GOALS ========== */
         .goals-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
         }
 
         .goal-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 36px 30px;
-            border: 1px solid var(--gray-200);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-main);
+            padding: 40px 32px;
         }
-
-        .goal-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .goal-card:nth-child(1)::before { background: var(--primary); }
-        .goal-card:nth-child(2)::before { background: var(--accent); }
-        .goal-card:nth-child(3)::before { background: var(--success); }
-
-        .goal-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            border-color: transparent;
-        }
-
-        .goal-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-        }
-
-        .goal-card:nth-child(1) .goal-icon { background: rgba(37, 99, 235, 0.1); }
-        .goal-card:nth-child(2) .goal-icon { background: rgba(6, 182, 212, 0.1); }
-        .goal-card:nth-child(3) .goal-icon { background: rgba(16, 185, 129, 0.1); }
 
         .goal-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--gray-800);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
         }
 
         .goal-desc {
             font-size: 0.95rem;
-            color: var(--gray-500);
-            line-height: 1.65;
+            color: var(--text-gray);
         }
 
         /* ========== CODIFICATION ========== */
         .codification-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            gap: 60px;
             align-items: center;
-        }
-
-        .codification-text h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-            color: #fff;
         }
 
         .codification-text p {
-            color: var(--gray-400);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .code-example {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 28px;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-        }
-
-        .code-line {
-            padding: 6px 0;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .code-line .num {
-            color: var(--gray-600);
-            min-width: 24px;
-            font-size: 0.8rem;
-        }
-
-        .code-line .key {
-            color: var(--accent);
-        }
-
-        .code-line .val {
-            color: var(--gray-300);
-        }
-
-        .code-line .sep {
-            color: var(--gray-600);
+            color: var(--text-gray);
+            margin-bottom: 20px;
         }
 
         .alert-box {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
             padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 24px;
+            background: var(--bg-main);
+            border-left: 4px solid var(--accent);
+            margin-top: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
-        .alert-warning {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        .alert-info {
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
-
-        .alert-icon {
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            margin-top: 2px;
+        .alert-content strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
         }
 
         .alert-content {
             font-size: 0.9rem;
-            line-height: 1.6;
+            color: var(--text-gray);
         }
 
-        .alert-warning .alert-content { color: #fbbf24; }
-        .alert-info .alert-content { color: var(--primary-light); }
-
-        .alert-content strong {
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        /* ========== LIFECYCLE ========== */
-        .lifecycle-wrapper {
-            position: relative;
-        }
-
-        .lifecycle-timeline {
-            display: flex;
-            gap: 0;
-            position: relative;
-        }
-
-        .lifecycle-stage {
-            flex: 1;
-            position: relative;
-        }
-
-        .stage-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 36px 28px;
-            margin: 0 12px;
-            border: 2px solid var(--gray-200);
-            position: relative;
-            transition: all 0.3s ease;
-            min-height: 420px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stage-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.1);
-        }
-
-        .lifecycle-stage:nth-child(1) .stage-card { border-color: var(--warning); }
-        .lifecycle-stage:nth-child(2) .stage-card { border-color: var(--primary); }
-        .lifecycle-stage:nth-child(3) .stage-card { border-color: var(--success); }
-
-        .stage-number {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .lifecycle-stage:nth-child(1) .stage-number { background: var(--warning); }
-        .lifecycle-stage:nth-child(2) .stage-number { background: var(--primary); }
-        .lifecycle-stage:nth-child(3) .stage-number { background: var(--success); }
-
-        .stage-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--gray-800);
-        }
-
-        .stage-desc {
-            font-size: 0.92rem;
-            color: var(--gray-500);
-            line-height: 1.65;
-            margin-bottom: 20px;
-        }
-
-        .stage-features {
-            list-style: none;
-            margin-top: auto;
-        }
-
-        .stage-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 0;
+        .code-example {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 32px;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 0.9rem;
-            color: var(--gray-600);
-            border-bottom: 1px solid var(--gray-100);
         }
 
-        .stage-features li:last-child {
+        .code-line {
+            display: flex;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--bg-alt);
+        }
+        
+        .code-line:last-child {
             border-bottom: none;
         }
 
-        .stage-features li .feat-icon {
-            font-size: 1rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        /* Arrow connectors */
-        .stage-connector {
-            position: absolute;
-            top: 50%;
-            right: -20px;
-            transform: translateY(-50%);
-            z-index: 10;
-            width: 40px;
-            height: 40px;
-            background: var(--gray-100);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: var(--gray-400);
-            border: 2px solid #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        /* ========== ECONOMICS (СКВОЗНАЯ СУЩНОСТЬ) ========== */
-        .economics-section {
-            position: relative;
-        }
-
-        .economics-banner {
-            background: var(--gradient-2);
-            border-radius: 24px;
-            padding: 48px;
-            color: #fff;
-            margin-bottom: 48px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .economics-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .economics-banner-content {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .economics-banner h3 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 14px;
-        }
-
-        .economics-banner p {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        .economics-flow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .econ-flow-item {
-            padding: 12px 24px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
+        .code-key {
+            width: 120px;
+            color: var(--text-light);
             font-weight: 600;
-            font-size: 0.9rem;
-            white-space: nowrap;
         }
 
-        .econ-flow-arrow {
-            font-size: 1.2rem;
-            opacity: 0.6;
+        .code-val {
+            color: var(--text-dark);
         }
 
-        .economics-features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .econ-feature {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 28px 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .econ-feature:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-4px);
-        }
-
-        .econ-feature-icon {
-            font-size: 2rem;
-            margin-bottom: 14px;
-        }
-
-        .econ-feature-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .econ-feature-desc {
-            font-size: 0.85rem;
-            color: var(--gray-400);
-            line-height: 1.5;
-        }
-
-        /* ========== ENTITIES ========== */
-        .entities-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
-        }
-
-        .entity-card {
-            background: #fff;
-            border-radius: 20px;
-            border: 1px solid var(--gray-200);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .entity-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-        }
-
-        .entity-header {
-            padding: 28px 28px 0;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .entity-icon-wrap {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .entity-card:nth-child(1) .entity-icon-wrap { background: rgba(245, 158, 11, 0.1); }
-        .entity-card:nth-child(2) .entity-icon-wrap { background: rgba(139, 92, 246, 0.1); }
-
-        .entity-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gray-800);
-        }
-
-        .entity-auto-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 100px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-        }
-
-        .entity-body {
-            padding: 20px 28px 28px;
-        }
-
-        .entity-desc {
-            font-size: 0.95rem;
-            color: var(--gray-500);
-            line-height: 1.65;
-            margin-bottom: 20px;
-        }
-
-        .entity-items {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .entity-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            border-radius: 10px;
-            background: var(--gray-50);
-            font-size: 0.85rem;
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
-        .entity-item-icon {
-            font-size: 0.95rem;
-        }
-
-        /* ========== ACCESS CONTROL ========== */
-        .access-grid {
+        /* ========== LIFECYCLE ========== */
+        .lifecycle-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
-        .access-card {
-            border-radius: 20px;
-            padding: 32px 28px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .access-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .access-card:nth-child(1) {
-            background: rgba(239, 68, 68, 0.06);
-            border: 1px solid rgba(239, 68, 68, 0.15);
-        }
-
-        .access-card:nth-child(2) {
-            background: rgba(245, 158, 11, 0.06);
-            border: 1px solid rgba(245, 158, 11, 0.15);
-        }
-
-        .access-card:nth-child(3) {
-            background: rgba(16, 185, 129, 0.06);
-            border: 1px solid rgba(16, 185, 129, 0.15);
-        }
-
-        .access-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .access-role {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--gray-800);
-        }
-
-        .access-desc {
-            font-size: 0.9rem;
-            color: var(--gray-500);
-            line-height: 1.6;
-        }
-
-        /* ========== PROCESS DIAGRAM ========== */
-        .process-diagram {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 48px;
-            margin-top: 48px;
-        }
-
-        .process-title {
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 36px;
-        }
-
-        .process-flow {
-            display: flex;
-            align-items: stretch;
-            gap: 0;
-            position: relative;
-        }
-
-        .process-step {
-            flex: 1;
-            position: relative;
-            padding: 0 8px;
-        }
-
-        .process-step-inner {
-            border-radius: 16px;
-            padding: 24px 20px;
-            height: 100%;
+        .stage-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 40px 32px;
             display: flex;
             flex-direction: column;
+        }
+
+        .stage-title {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            display: flex;
             align-items: center;
-            text-align: center;
-            position: relative;
         }
 
-        .process-step:nth-child(1) .process-step-inner {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-        .process-step:nth-child(2) .process-step-inner {
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
-        .process-step:nth-child(3) .process-step-inner {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+        .stage-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+            min-height: 60px;
         }
 
-        .process-step-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
+        .stage-list {
+            list-style: none;
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
         }
 
-        .process-step-name {
-            font-weight: 700;
-            font-size: 1rem;
+        .stage-list li {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            padding: 6px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .stage-list li::before {
+            content: '—';
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        /* ========== ECONOMICS ========== */
+        .economics-banner {
+            background: var(--primary);
             color: #fff;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .economics-banner h3 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .economics-banner p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+        }
+
+        .econ-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .econ-feat {
+            background: var(--primary);
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .econ-feat-title {
+            color: #fff;
+            font-size: 1rem;
             margin-bottom: 8px;
         }
 
-        .process-step-detail {
-            font-size: 0.82rem;
-            color: var(--gray-400);
-            line-height: 1.5;
+        .econ-feat-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
         }
 
-        .process-arrow {
-            position: absolute;
-            top: 50%;
-            right: -14px;
-            transform: translateY(-50%);
-            z-index: 5;
+        /* ========== ENTITIES ========== */
+        .entities-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .entity-box {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 40px;
+        }
+
+        .entity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .entity-title {
             font-size: 1.4rem;
-            color: var(--gray-500);
+            font-weight: 400;
         }
 
-        /* Economics bar below process */
-        .economics-bar {
-            margin-top: 24px;
-            background: linear-gradient(90deg, rgba(37, 99, 235, 0.15), rgba(6, 182, 212, 0.15));
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: 12px;
-            padding: 16px 28px;
+        .entity-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .entity-desc {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+
+        .entity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .entity-item {
+            font-size: 0.9rem;
+            color: var(--text-dark);
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
         }
 
-        .economics-bar-icon {
-            font-size: 1.3rem;
-        }
-
-        .economics-bar-text {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--primary-light);
-        }
-
-        .economics-bar-sub {
-            font-size: 0.82rem;
-            color: var(--gray-400);
-            margin-left: 8px;
-        }
-
-        /* ========== CTA / LINK SECTION ========== */
-        .cta-section {
-            text-align: center;
-            padding: 100px 2rem;
-            background: linear-gradient(180deg, #fff 0%, var(--gray-50) 100%);
-        }
-
-        .cta-box {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--gradient-2);
-            border-radius: 28px;
-            padding: 56px 48px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::before {
+        .entity-item::before {
             content: '';
-            position: absolute;
-            top: -40%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
-            border-radius: 50%;
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            margin-right: 12px;
         }
 
-        .cta-box h3 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 14px;
-            position: relative;
+        /* ========== ACCESS CONTROL ========== */
+        .access-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-main);
         }
 
-        .cta-box p {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            margin-bottom: 32px;
-            position: relative;
+        .access-table th, .access-table td {
+            padding: 24px 32px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
         }
 
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: #fff;
-            color: var(--primary);
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
+        .access-table th {
+            font-weight: 500;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            width: 30%;
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        .access-table td {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .access-role {
+            font-weight: 500;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 4px;
         }
 
         /* ========== FOOTER ========== */
         .footer {
-            background: var(--gray-900);
-            padding: 36px 2rem;
+            background: var(--primary);
+            padding: 40px 2rem;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .footer p {
-            color: var(--gray-500);
+            color: rgba(255,255,255,0.5);
             font-size: 0.85rem;
         }
 
         .footer a {
-            color: var(--primary-light);
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
+            margin-left: 12px;
         }
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .hero-text h1 { font-size: 2.5rem; }
-            .goals-grid { grid-template-columns: 1fr; }
-            .codification-layout { grid-template-columns: 1fr; }
-            .lifecycle-timeline { flex-direction: column; }
-            .stage-connector { display: none; }
-            .entities-grid { grid-template-columns: 1fr; }
-            .economics-features { grid-template-columns: repeat(2, 1fr); }
-            .economics-banner-content { grid-template-columns: 1fr; }
-            .access-grid { grid-template-columns: 1fr; }
-            .process-flow { flex-direction: column; gap: 12px; }
-            .process-arrow { display: none; }
+        .footer a:hover {
+            color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-text h1 { font-size: 2rem; }
-            .section-title { font-size: 1.8rem; }
-            .hero-stats { grid-template-columns: 1fr; }
-            .economics-features { grid-template-columns: 1fr; }
-            .entity-items { grid-template-columns: 1fr; }
-        }
-
-        /* ========== ANIMATIONS ========== */
-        .fade-up {
+        /* ========== АНИМАЦИИ ========== */
+        .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .fade-up.visible {
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Slide indicator */
-        .slide-counter {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: var(--gray-900);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 100px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: default;
-        }
-
-        .slide-counter .current {
-            color: var(--primary-light);
+        /* ========== РЕСПОНСИВ ========== */
+        @media (max-width: 992px) {
+            .hero-content, .codification-layout, .economics-banner, .entities-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 { font-size: 2.8rem; }
+            .goals-grid { grid-template-columns: 1fr; }
+            .lifecycle-grid { grid-template-columns: 1fr; }
+            .access-table th, .access-table td { display: block; width: 100%; }
+            .access-table th { border-bottom: none; padding-bottom: 8px; }
         }
     </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- НАВИГАЦИЯ -->
 <nav class="navbar" id="navbar">
     <div class="nav-container">
         <a href="#" class="nav-logo">
-            <div class="nav-logo-icon">📊</div>
-            TK-Soft Projects
+            <div class="nav-logo-icon"></div>
+            Телекомсофт
         </a>
         <ul class="nav-links">
             <li><a href="#goals">Цели</a></li>
-            <li><a href="#codification">Кодификация</a></li>
-            <li><a href="#lifecycle">Жизненный цикл</a></li>
+            <li><a href="#lifecycle">Цикл</a></li>
             <li><a href="#economics">Экономика</a></li>
             <li><a href="#entities">Сущности</a></li>
-            <li><a href="#access">Доступ</a></li>
-            <li><a href="https://my.tk-soft.ru/page/proekty/ekonomika/" target="_blank" class="nav-cta">Открыть систему ↗</a></li>
+            <li><a href="https://my.tk-soft.ru/page/proekty/ekonomika/" target="_blank" class="nav-cta">Вход в систему →</a></li>
         </ul>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <div class="hero-grid"></div>
     <div class="hero-content">
-        <div class="hero-text">
-            <div class="hero-badges">
-                <span class="hero-badge"><span class="dot"></span> Единое пространство</span>
-                <span class="hero-badge">🔒 Контроль доступа</span>
-                <span class="hero-badge">📈 Автоматическая отчётность</span>
-            </div>
-            <h1>Единая система <span>управления проектами</span></h1>
-            <p>Систематизация учёта данных, единое информационное пространство и консолидированная отчётность — от инициации проекта до завершения гарантийного периода.</p>
+        <div class="hero-text fade-in">
+            <h1>Единое пространство<br>управления проектами</h1>
+            <p>Систематизация учёта данных, единое информационное поле и сквозная отчётность по опыту команды Телекомсофт.</p>
         </div>
-        <div class="hero-visual">
-            <div class="hero-card-stack">
-                <div class="hero-card">
-                    <div class="hero-card-header">
-                        <div class="hero-card-icon" style="background:rgba(245,158,11,0.15);">🚀</div>
-                        <div>
-                            <div class="hero-card-title">Пресейл</div>
-                            <div class="hero-card-subtitle">Инициация и оценка</div>
-                        </div>
-                    </div>
-                    <div class="hero-card-bar">
-                        <div class="hero-card-bar-fill" style="width: 100%; background: var(--warning);"></div>
-                    </div>
-                </div>
-                <div class="hero-card">
-                    <div class="hero-card-header">
-                        <div class="hero-card-icon" style="background:rgba(37,99,235,0.15);">⚙️</div>
-                        <div>
-                            <div class="hero-card-title">Реализация</div>
-                            <div class="hero-card-subtitle">Плановое → Фактическое</div>
-                        </div>
-                    </div>
-                    <div class="hero-card-bar">
-                        <div class="hero-card-bar-fill" style="width: 65%; background: var(--primary);"></div>
-                    </div>
-                </div>
-                <div class="hero-card">
-                    <div class="hero-card-header">
-                        <div class="hero-card-icon" style="background:rgba(16,185,129,0.15);">✅</div>
-                        <div>
-                            <div class="hero-card-title">Гарантия</div>
-                            <div class="hero-card-subtitle">Сверка и закрытие</div>
-                        </div>
-                    </div>
-                    <div class="hero-card-bar">
-                        <div class="hero-card-bar-fill" style="width: 30%; background: var(--success);"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">3</div>
-                    <div class="hero-stat-label">Стадии проекта</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">4+</div>
-                    <div class="hero-stat-label">Авто-сущности</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">100%</div>
-                    <div class="hero-stat-label">Сквозной учёт</div>
-                </div>
-            </div>
+        <div class="hero-visual fade-in">
+            <div class="hero-visual-title">Ключевые показатели внедрения</div>
+            <ul class="hero-stat-list">
+                <li class="hero-stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-text">Стадии жизненного цикла с непрерывным наследованием данных</span>
+                </li>
+                <li class="hero-stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-text">Сквозной учёт экономики от пресейла до гарантии</span>
+                </li>
+                <li class="hero-stat-item">
+                    <span class="stat-number">4+</span>
+                    <span class="stat-text">Автоматически формируемых сущностей проекта</span>
+                </li>
+            </ul>
         </div>
     </div>
 </section>
 
-<!-- GOALS -->
-<section class="section section-alt" id="goals">
+<!-- ЦЕЛИ И КОДИФИКАЦИЯ -->
+<section class="section" id="goals">
     <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">🎯 Ключевые цели</span>
-            <h2 class="section-title">Зачем нужна единая система</h2>
-            <p class="section-subtitle">Устранение разночтений в отчётности смежных подразделений и создание прозрачной среды для всех участников процесса</p>
+        <div class="section-header fade-in">
+            <h2 class="section-title">Системный подход к учету</h2>
+            <p class="section-subtitle">Устраняем разночтения в отчетности между смежными подразделениями через единые стандарты и общее рабочее пространство.</p>
         </div>
-        <div class="goals-grid">
-            <div class="goal-card fade-up">
-                <div class="goal-icon">📋</div>
-                <h3 class="goal-title">Систематизация учёта данных</h3>
-                <p class="goal-desc">Все данные по проектам структурированы и хранятся в единой системе. Исключается дублирование и потеря информации между подразделениями.</p>
+        
+        <div class="goals-grid fade-in">
+            <div class="goal-card">
+                <h3 class="goal-title"><span class="blue-number">1</span> Систематизация</h3>
+                <p class="goal-desc">Структурированное хранение данных исключает потерю информации и дублирование функций.</p>
             </div>
-            <div class="goal-card fade-up">
-                <div class="goal-icon">🌐</div>
-                <h3 class="goal-title">Единое информационное пространство</h3>
-                <p class="goal-desc">Все подразделения работают в одной среде с актуальными данными. Нет расхождений между отчётами — все видят одну «правду».</p>
+            <div class="goal-card">
+                <h3 class="goal-title"><span class="blue-number">2</span> Единая среда</h3>
+                <p class="goal-desc">Все подразделения оперируют актуальными, синхронизированными данными без расхождений.</p>
             </div>
-            <div class="goal-card fade-up">
-                <div class="goal-icon">📊</div>
-                <h3 class="goal-title">Единая отчётность</h3>
-                <p class="goal-desc">Консолидированные отчёты формируются автоматически. Руководящий состав получает целостную картину по всем проектам компании.</p>
+            <div class="goal-card">
+                <h3 class="goal-title"><span class="blue-number">3</span> Отчетность</h3>
+                <p class="goal-desc">Автоматическая консолидация данных для руководящего состава в формате «одной цифры».</p>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- CODIFICATION -->
-<section class="section section-dark" id="codification">
-    <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">🏷️ Стандарт наименований</span>
-            <h2 class="section-title">Единая кодификация проектов</h2>
-            <p class="section-subtitle">Единый регламент наименования гарантирует однозначное распознавание проектов во всех подразделениях</p>
-        </div>
-        <div class="codification-layout fade-up">
+        <div class="codification-layout fade-in" style="margin-top: 80px;">
             <div class="codification-text">
-                <h3>Почему это критически важно</h3>
-                <p>Приказ о нейминге был создан из-за разночтений проектов в отчётах смежных подразделений. Руководящий состав столкнулся с ситуацией, когда один и тот же проект фигурировал под разными названиями в разных отчётах.</p>
-                <p>Единая кодификация исключает эту проблему: каждый проект получает уникальный, стандартизированный идентификатор, используемый во всех подразделениях и отчётах.</p>
+                <h3 style="font-size: 1.6rem; margin-bottom: 20px;">Единая кодификация</h3>
+                <p>Предпосылкой к созданию строгого приказа о нейминге стало непонимание со стороны руководящего состава при обнаружении разночтений проектов в отчетах смежных подразделений.</p>
+                <p>Важно: кодификация должна быть единой и непрерывной на всех этапах.</p>
 
-                <div class="alert-box alert-warning">
-                    <span class="alert-icon">⚠️</span>
+                <div class="alert-box">
                     <div class="alert-content">
-                        <strong>Требуется актуализация</strong>
-                        Приказ о нейминге хранится: <code>L:\Регламенты</code> — подписанная версия не найдена. Рекомендуется актуализировать и переподписать при отсутствии возражений.
-                    </div>
-                </div>
-
-                <div class="alert-box alert-info">
-                    <span class="alert-icon">ℹ️</span>
-                    <div class="alert-content">
-                        <strong>Предпосылка создания</strong>
-                        Приказ родился из-за непонимания руководящего состава при разночтении проектов в отчётах смежных подразделений.
+                        <strong>Актуализация регламента</strong>
+                        Приказ о нейминге располагается по пути <code>L:\Регламенты</code>. Подписанная версия отсутствует — требуется актуализация и переподписание.
                     </div>
                 </div>
             </div>
 
-            <div>
-                <div class="code-example">
-                    <div style="margin-bottom: 12px; font-weight: 600; color: var(--gray-300); font-size: 0.85rem;">
-                        📝 Пример кодификации проекта
-                    </div>
-                    <div class="code-line">
-                        <span class="num">1</span>
-                        <span class="key">КОД</span>
-                        <span class="sep">:</span>
-                        <span class="val">PRJ-2026-0142</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="num">2</span>
-                        <span class="key">ТИП</span>
-                        <span class="sep">:</span>
-                        <span class="val">Реализация</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="num">3</span>
-                        <span class="key">ЗАКАЗЧИК</span>
-                        <span class="sep">:</span>
-                        <span class="val">ПАО «РусЭнерго»</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="num">4</span>
-                        <span class="key">СТАДИЯ</span>
-                        <span class="sep">:</span>
-                        <span class="val">Реализация</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="num">5</span>
-                        <span class="key">ЭКОНОМИКА</span>
-                        <span class="sep">:</span>
-                        <span class="val">✅ сформирована</span>
-                    </div>
-                </div>
+            <div class="code-example">
+                <div class="code-line"><span class="code-key">КОД:</span> <span class="code-val">PRJ-2026-0142</span></div>
+                <div class="code-line"><span class="code-key">ТИП:</span> <span class="code-val">Реализация</span></div>
+                <div class="code-line"><span class="code-key">ЗАКАЗЧИК:</span> <span class="code-val">ООО «Вектор»</span></div>
+                <div class="code-line"><span class="code-key">СТАДИЯ:</span> <span class="code-val">Реализация</span></div>
+                <div class="code-line"><span class="code-key">ЭКОНОМИКА:</span> <span class="code-val">Сформирована</span></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- LIFECYCLE -->
+<!-- ЖИЗНЕННЫЙ ЦИКЛ -->
 <section class="section section-alt" id="lifecycle">
     <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">🔄 Жизненный цикл проекта</span>
-            <h2 class="section-title">Три стадии проекта</h2>
-            <p class="section-subtitle">Каждый проект проходит полный жизненный цикл с наследованием данных между стадиями</p>
+        <div class="section-header fade-in">
+            <h2 class="section-title">Жизненный цикл проекта</h2>
+            <p class="section-subtitle">Проект проходит три обязательные стадии. Переход между стадиями сопровождается автоматическим наследованием данных.</p>
         </div>
-        <div class="lifecycle-wrapper fade-up">
-            <div class="lifecycle-timeline">
-                <!-- PRESALE -->
-                <div class="lifecycle-stage">
-                    <div class="stage-card">
-                        <div class="stage-number">1</div>
-                        <h3 class="stage-title">🚀 Пресейл</h3>
-                        <p class="stage-desc">Инициация проекта. Создание пресейл-активности запускает автоматическое формирование связанных сущностей.</p>
-                        <ul class="stage-features">
-                            <li>
-                                <span class="feat-icon">⚡</span>
-                                <span>Автосоздание сущности <strong>Экономика</strong></span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">📦</span>
-                                <span>Автосоздание сущности <strong>Логистика</strong></span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">📑</span>
-                                <span>Автосоздание сущности <strong>Торги</strong></span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">🔔</span>
-                                <span>Уведомление ФД о новом проекте</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">📊</span>
-                                <span>Плановые показатели и оценки</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="stage-connector">→</div>
-                </div>
 
-                <!-- REALIZATION -->
-                <div class="lifecycle-stage">
-                    <div class="stage-card">
-                        <div class="stage-number">2</div>
-                        <h3 class="stage-title">⚙️ Реализация</h3>
-                        <p class="stage-desc">Наследование всех сущностей из Пресейла. Плановые показатели становятся фактическими.</p>
-                        <ul class="stage-features">
-                            <li>
-                                <span class="feat-icon">🔄</span>
-                                <span>Наследование всех сущностей Пресейла</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">📈</span>
-                                <span>План → Факт по всем показателям</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">💰</span>
-                                <span>Фактические затраты и оплаты</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">🚚</span>
-                                <span>Фактическая логистика и доставка</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">📋</span>
-                                <span>Трансляция данных в отчётность</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="stage-connector">→</div>
-                </div>
+        <div class="lifecycle-grid fade-in">
+            <div class="stage-card">
+                <h3 class="stage-title"><span class="blue-number">1</span> Пресейл</h3>
+                <p class="stage-desc">Инициация проекта. Автоматический запуск смежных процессов.</p>
+                <ul class="stage-list">
+                    <li>Автосоздание сущности Экономика</li>
+                    <li>Автосоздание сущностей Логистика и Торги</li>
+                    <li>Уведомление финансового директора</li>
+                    <li>Фиксация плановых показателей</li>
+                </ul>
+            </div>
+            
+            <div class="stage-card">
+                <h3 class="stage-title"><span class="blue-number">2</span> Реализация</h3>
+                <p class="stage-desc">Трансформация плановых показателей в фактические метрики.</p>
+                <ul class="stage-list">
+                    <li>Наследование сущностей этапа Пресейл</li>
+                    <li>Фиксация фактических затрат</li>
+                    <li>Мониторинг статуса доставки</li>
+                    <li>Трансляция данных в отчетность</li>
+                </ul>
+            </div>
 
-                <!-- WARRANTY -->
-                <div class="lifecycle-stage">
-                    <div class="stage-card">
-                        <div class="stage-number">3</div>
-                        <h3 class="stage-title">✅ Гарантия</h3>
-                        <p class="stage-desc">Закрывающий этап: сверка расчётов, проверка документов и постановка на гарантийный учёт.</p>
-                        <ul class="stage-features">
-                            <li>
-                                <span class="feat-icon">🔍</span>
-                                <span>Сверка всех расчётов по проекту</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">📄</span>
-                                <span>Проверка документации проекта</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">🛡️</span>
-                                <span>Постановка на гарантийный учёт</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">📦</span>
-                                <span>Сверка серийных номеров (пакинги)</span>
-                            </li>
-                            <li>
-                                <span class="feat-icon">✔️</span>
-                                <span>Финализация экономики проекта</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="stage-card">
+                <h3 class="stage-title"><span class="blue-number">3</span> Гарантия</h3>
+                <p class="stage-desc">Закрывающий этап, сверка и переход в режим поддержки.</p>
+                <ul class="stage-list">
+                    <li>Сверка всех расчетов</li>
+                    <li>Проверка проектной документации</li>
+                    <li>Постановка на гарантийный учет</li>
+                    <li>Сбор пакингов (серийных номеров)</li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ECONOMICS -->
-<section class="section section-dark" id="economics">
+<!-- ЭКОНОМИКА -->
+<section class="section" id="economics">
     <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">💰 Сквозная сущность</span>
-            <h2 class="section-title">Экономика проекта</h2>
-            <p class="section-subtitle">Сопровождает проект от инициации до завершения гарантийного периода</p>
+        <div class="section-header fade-in">
+            <h2 class="section-title">Экономика как сквозная сущность</h2>
+            <p class="section-subtitle">Создана как отдельный путь («Проекты» — «Экономика») для нужд финансовых служб и руководства.</p>
         </div>
 
-        <div class="economics-banner fade-up">
-            <div class="economics-banner-content">
-                <div>
-                    <h3>Проекты → Экономика</h3>
-                    <p>Сущность «Экономика» создаётся автоматически при создании Пресейл-активности любым инициатором. Финансовый директор получает уведомление о появлении нового потенциального проекта в реализации.</p>
+        <div class="economics-banner fade-in">
+            <div>
+                <h3>Механика процесса</h3>
+                <p>Экономика создается автоматически при инициации Пресейл-активности. Финансовый директор получает мгновенное уведомление о появлении потенциального проекта, готовящегося к реализации.</p>
+            </div>
+            <div class="econ-features">
+                <div class="econ-feat">
+                    <div class="econ-feat-title">Автономность</div>
+                    <div class="econ-feat-desc">Создается без ручного ввода со стороны ФД</div>
                 </div>
-                <div class="economics-flow">
-                    <span class="econ-flow-item">Пресейл</span>
-                    <span class="econ-flow-arrow">→</span>
-                    <span class="econ-flow-item">Реализация</span>
-                    <span class="econ-flow-arrow">→</span>
-                    <span class="econ-flow-item">Гарантия</span>
+                <div class="econ-feat">
+                    <div class="econ-feat-title">Сквозной контроль</div>
+                    <div class="econ-feat-desc">Сопровождает проект до закрытия</div>
                 </div>
-            </div>
-        </div>
-
-        <div class="economics-features fade-up">
-            <div class="econ-feature">
-                <div class="econ-feature-icon">🤖</div>
-                <div class="econ-feature-title">Автосоздание</div>
-                <div class="econ-feature-desc">Формируется автоматически при создании пресейл-активности</div>
-            </div>
-            <div class="econ-feature">
-                <div class="econ-feature-icon">🔒</div>
-                <div class="econ-feature-title">Ограниченный доступ</div>
-                <div class="econ-feature-desc">Закрыта для всех, кроме руководящего состава</div>
-            </div>
-            <div class="econ-feature">
-                <div class="econ-feature-icon">👁️</div>
-                <div class="econ-feature-title">Частичный просмотр</div>
-                <div class="econ-feature-desc">Инициатор видит только одну итоговую цифру своего проекта</div>
-            </div>
-            <div class="econ-feature">
-                <div class="econ-feature-icon">📊</div>
-                <div class="econ-feature-title">Одна цифра в отчёте</div>
-                <div class="econ-feature-desc">В отчёты выгружается единственная агрегированная цифра</div>
+                <div class="econ-feat">
+                    <div class="econ-feat-title">Консолидация</div>
+                    <div class="econ-feat-desc">Выгрузка в отчет единой цифрой</div>
+                </div>
+                <div class="econ-feat">
+                    <div class="econ-feat-title">Безопасность</div>
+                    <div class="econ-feat-desc">Строгое разграничение прав доступа</div>
+                </div>
             </div>
         </div>
 
-        <!-- Process Diagram -->
-        <div class="process-diagram fade-up">
-            <div class="process-title">Механика процесса формирования сущностей</div>
-            <div class="process-flow">
-                <div class="process-step">
-                    <div class="process-step-inner">
-                        <div class="process-step-icon">👤</div>
-                        <div class="process-step-name">Инициатор</div>
-                        <div class="process-step-detail">Создаёт Пресейл-активность в системе</div>
-                    </div>
-                    <span class="process-arrow">→</span>
-                </div>
-                <div class="process-step">
-                    <div class="process-step-inner">
-                        <div class="process-step-icon">⚡</div>
-                        <div class="process-step-name">Автоматика</div>
-                        <div class="process-step-detail">Система автоматически создаёт: Экономика, Логистика, Торги</div>
-                    </div>
-                    <span class="process-arrow">→</span>
-                </div>
-                <div class="process-step">
-                    <div class="process-step-inner">
-                        <div class="process-step-icon">🔔</div>
-                        <div class="process-step-name">Уведомление</div>
-                        <div class="process-step-detail">ФД получает оповещение о новом потенциальном проекте</div>
-                    </div>
-                </div>
-            </div>
-            <div class="economics-bar">
-                <span class="economics-bar-icon">💰</span>
-                <span class="economics-bar-text">Экономика — сквозная сущность</span>
-                <span class="economics-bar-sub">сопровождает проект на всех стадиях жизненного цикла</span>
-            </div>
+        <div style="margin-top: 60px;" class="fade-in">
+            <h3 style="font-size: 1.4rem; margin-bottom: 24px;">Матрица доступа к экономике проекта</h3>
+            <table class="access-table">
+                <tr>
+                    <th>Руководящий состав</th>
+                    <td>
+                        <span class="access-role">Полный доступ</span>
+                        Просмотр всех деталей, показателей и аналитики по экономике любого проекта.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Инициаторы проектов</th>
+                    <td>
+                        <span class="access-role">Частичный доступ</span>
+                        Доступен просмотр только итогового результата по собственному проекту (в виде одной цифры).
+                    </td>
+                </tr>
+                <tr>
+                    <th>Остальные сотрудники</th>
+                    <td>
+                        <span class="access-role">Доступ закрыт</span>
+                        Сущность полностью скрыта от просмотра в целях конфиденциальности финансовых данных.
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </section>
 
-<!-- ENTITIES -->
+<!-- СУЩНОСТИ -->
 <section class="section section-alt" id="entities">
     <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">🧩 Автоматические сущности</span>
-            <h2 class="section-title">Логистика и Торги</h2>
-            <p class="section-subtitle">Формируются автоматически на этапе Пресейл и сопровождают проект через все стадии</p>
+        <div class="section-header fade-in">
+            <h2 class="section-title">Автоматические сущности</h2>
+            <p class="section-subtitle">Формируются на этапе Пресейл и обеспечивают контроль над операционными процессами.</p>
         </div>
-        <div class="entities-grid fade-up">
-            <!-- LOGISTICS -->
-            <div class="entity-card">
+
+        <div class="entities-wrapper fade-in">
+            <div class="entity-box">
                 <div class="entity-header">
-                    <div class="entity-icon-wrap">🚚</div>
-                    <div>
-                        <div class="entity-name">Логистика</div>
-                        <span class="entity-auto-badge">⚡ Автоформирование</span>
-                    </div>
+                    <h3 class="entity-title">Логистика</h3>
+                    <span class="entity-badge">Автоматически</span>
                 </div>
-                <div class="entity-body">
-                    <p class="entity-desc">Отражение плановых и фактических затрат, потребностей и оплат на таможню, контроль видов и статусов доставки с трансляцией в отчётность.</p>
-                    <div class="entity-items">
-                        <div class="entity-item">
-                            <span class="entity-item-icon">💰</span>
-                            <span>Плановые затраты</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">📈</span>
-                            <span>Фактические затраты</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">🏛️</span>
-                            <span>Таможня и оплаты</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">🚢</span>
-                            <span>Вид доставки</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">📍</span>
-                            <span>Статус доставки</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">📋</span>
-                            <span>Пакинги (серийники)</span>
-                        </div>
-                    </div>
+                <p class="entity-desc">Отражение плановых и фактических затрат, потребностей и оплат на таможню. Данные транслируются всем заинтересованным лицам.</p>
+                <div class="entity-grid">
+                    <span class="entity-item">Плановые затраты</span>
+                    <span class="entity-item">Фактические затраты</span>
+                    <span class="entity-item">Вид и статус доставки</span>
+                    <span class="entity-item">Оплаты на таможню</span>
+                    <span class="entity-item">Сбор пакингов</span>
+                    <span class="entity-item">Выгрузка в отчет</span>
                 </div>
             </div>
 
-            <!-- TENDERS -->
-            <div class="entity-card">
+            <div class="entity-box">
                 <div class="entity-header">
-                    <div class="entity-icon-wrap">📑</div>
-                    <div>
-                        <div class="entity-name">Торги</div>
-                        <span class="entity-auto-badge">⚡ Автоформирование</span>
-                    </div>
+                    <h3 class="entity-title">Торги</h3>
+                    <span class="entity-badge">Автоматически</span>
                 </div>
-                <div class="entity-body">
-                    <p class="entity-desc">Полная информация по торгам, автоматическая отчётность, контроль сроков подачи, переторжек и ключевых дат.</p>
-                    <div class="entity-items">
-                        <div class="entity-item">
-                            <span class="entity-item-icon">📄</span>
-                            <span>Данные по торгам</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">📊</span>
-                            <span>Отчётность</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">⏰</span>
-                            <span>Сроки подачи</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">🔄</span>
-                            <span>Переторжки</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">📅</span>
-                            <span>Контрольные даты</span>
-                        </div>
-                        <div class="entity-item">
-                            <span class="entity-item-icon">✅</span>
-                            <span>Статус торгов</span>
-                        </div>
-                    </div>
+                <p class="entity-desc">Содержит полный объем информации по тендерным процедурам для контроля сроков и подготовки отчетности.</p>
+                <div class="entity-grid">
+                    <span class="entity-item">Данные по торгам</span>
+                    <span class="entity-item">Сроки подачи</span>
+                    <span class="entity-item">Отслеживание статуса</span>
+                    <span class="entity-item">Этапы переторжки</span>
+                    <span class="entity-item">Формирование отчета</span>
+                    <span class="entity-item">Контроль дедлайнов</span>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- ACCESS CONTROL -->
-<section class="section" id="access">
-    <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">🔐 Управление доступом</span>
-            <h2 class="section-title">Разграничение прав доступа</h2>
-            <p class="section-subtitle">Гибкая система доступа к сущности «Экономика» для разных ролей</p>
-        </div>
-        <div class="access-grid fade-up">
-            <div class="access-card">
-                <div class="access-icon">🚫</div>
-                <div class="access-role">Рядовые сотрудники</div>
-                <p class="access-desc">Сущность «Экономика» полностью закрыта к просмотру. Финансовые данные проектов недоступны.</p>
-            </div>
-            <div class="access-card">
-                <div class="access-icon">👁️</div>
-                <div class="access-role">Инициаторы проектов</div>
-                <p class="access-desc">Частичный доступ — видят только результат своего проекта в виде одной итоговой цифры.</p>
-            </div>
-            <div class="access-card">
-                <div class="access-icon">🔓</div>
-                <div class="access-role">Руководящий состав</div>
-                <p class="access-desc">Полный доступ ко всем финансовым данным по всем проектам компании с детализацией.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-    <div class="cta-box fade-up">
-        <h3>Начните работу в системе</h3>
-        <p>Единое пространство для управления проектами доступно по ссылке</p>
-        <a href="https://my.tk-soft.ru/page/proekty/ekonomika/" target="_blank" class="cta-button">
-            Перейти в Экономику
-            <span>→</span>
-        </a>
     </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-    <p>© 2026 TK-Soft — Единая система управления проектами &nbsp;|&nbsp; <a href="https://my.tk-soft.ru" target="_blank">my.tk-soft.ru</a></p>
+    <div class="container">
+        <p>© 2026 Телекомсофт. Единая система управления проектами. 
+           <a href="https://my.tk-soft.ru" target="_blank">my.tk-soft.ru</a>
+        </p>
+    </div>
 </footer>
-
-<!-- Slide Counter -->
-<div class="slide-counter" id="slideCounter">
-    <span>📌</span>
-    <span>Секция: </span>
-    <span class="current" id="currentSection">Главная</span>
-</div>
 
 <script>
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     });
 
-    // Fade-in on scroll
+    // Fade in animation observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    }, observerOptions);
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Active nav link & section counter
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-    const currentSectionEl = document.getElementById('currentSection');
-
-    const sectionNames = {
-        'hero': 'Главная',
-        'goals': 'Цели',
-        'codification': 'Кодификация',
-        'lifecycle': 'Жизненный цикл',
-        'economics': 'Экономика',
-        'entities': 'Сущности',
-        'access': 'Доступ'
-    };
-
-    window.addEventListener('scroll', () => {
-        let current = 'hero';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
-
-        if (currentSectionEl && sectionNames[current]) {
-            currentSectionEl.textContent = sectionNames[current];
-        }
-    });
-
-    // Animate hero card bars on load
-    window.addEventListener('load', () => {
-        document.querySelectorAll('.hero-card-bar-fill').forEach(bar => {
-            const w = bar.style.width;
-            bar.style.width = '0';
-            setTimeout(() => { bar.style.width = w; }, 500);
-        });
-    });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
 </body>
