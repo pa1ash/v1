@@ -675,7 +675,7 @@
             color: #fff;
         }
 
-        /* ========== АНИМАЦИИ ========== */
+        /* ========== АНИМАЦИИ И ОБЩЕЕ ========== */
         .fade-in {
             opacity: 0;
             transform: translateY(15px);
@@ -685,6 +685,16 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .content-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            object-fit: cover;
         }
 
         /* ========== РЕСПОНСИВ ========== */
@@ -736,6 +746,7 @@
             <p>Систематизация учёта данных, единое информационное поле и сквозная отчётность по опыту команды Телекомсофт.</p>
         </div>
         <div class="hero-visual fade-in">
+            <img src="assets/img/hero.jpg" alt="Проектное управление" class="content-image">
             <div class="hero-visual-title">Ключевые показатели внедрения</div>
             <ul class="hero-stat-list">
                 <li class="hero-stat-item">
@@ -871,6 +882,8 @@
             </div>
         </div>
 
+        <img src="assets/img/contracts.jpg" alt="Договорные документы" class="content-image fade-in" style="margin-top: 20px; margin-bottom: 60px; max-height: 500px;">
+
         <div class="contracts-process fade-in">
             <div class="contracts-process-step">
                 <div class="step-num">Шаг 01</div>
@@ -950,6 +963,7 @@
 
         <div class="reporting-intro fade-in">
             <div class="reporting-intro-text">
+                <img src="assets/img/reporting.jpg" alt="Единая отчётность" class="content-image" style="margin-bottom: 32px;">
                 <p>Система отчётности построена на принципе единого источника данных: каждый показатель попадает в отчёт ровно один раз — в момент фиксации события в системе. Отчёты доступны руководству в режиме реального времени без участия исполнителей.</p>
                 <p>Разграничение доступа обеспечивает конфиденциальность финансовых данных: каждый сотрудник видит только ту часть информации, которая соответствует его роли.</p>
                 <div class="alert-box">
