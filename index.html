@@ -411,51 +411,80 @@
             margin-right: 8px;
         }
 
-        /* ========== ECONOMICS ========== */
-        .economics-banner {
-            background: var(--primary);
-            color: #fff;
-            padding: 60px;
+        /* ========== CONTRACTS ========== */
+        .contracts-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+
+        .contract-card {
+            background: var(--bg-main);
+            padding: 36px 32px;
+        }
+
+        .contract-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            display: flex;
             align-items: center;
         }
 
-        .economics-banner h3 {
-            color: #fff;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 20px;
+        .contract-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
         }
 
-        .economics-banner p {
-            color: rgba(255,255,255,0.8);
-            font-size: 1rem;
-        }
-
-        .econ-features {
+        .contracts-process {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 1px;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .econ-feat {
             background: var(--primary);
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--primary);
+            overflow: hidden;
         }
 
-        .econ-feat-title {
+        .contracts-process-step {
+            background: var(--primary);
+            padding: 32px 28px;
+            position: relative;
+        }
+
+        .contracts-process-step::after {
+            content: '→';
+            position: absolute;
+            right: -10px;
+            top: 32px;
+            color: rgba(255,255,255,0.3);
+            font-size: 1.2rem;
+        }
+
+        .contracts-process-step:last-child::after {
+            display: none;
+        }
+
+        .contracts-process-step .step-num {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 12px;
+        }
+
+        .contracts-process-step h4 {
             color: #fff;
             font-size: 1rem;
-            margin-bottom: 8px;
+            font-weight: 400;
+            margin-bottom: 10px;
         }
 
-        .econ-feat-desc {
+        .contracts-process-step p {
             color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
+            line-height: 1.5;
         }
 
         /* ========== ENTITIES ========== */
@@ -588,14 +617,20 @@
 
         /* ========== РЕСПОНСИВ ========== */
         @media (max-width: 992px) {
-            .hero-content, .codification-layout, .economics-banner, .entities-wrapper {
+            .hero-content, .codification-layout, .entities-wrapper {
                 grid-template-columns: 1fr;
             }
             .hero-text h1 { font-size: 2.8rem; }
             .goals-grid { grid-template-columns: 1fr; }
             .lifecycle-grid { grid-template-columns: 1fr; }
+            .contracts-grid { grid-template-columns: 1fr; }
+            .contracts-process { grid-template-columns: 1fr 1fr; }
             .access-table th, .access-table td { display: block; width: 100%; }
             .access-table th { border-bottom: none; padding-bottom: 8px; }
+        }
+
+        @media (max-width: 600px) {
+            .contracts-process { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -611,7 +646,7 @@
         <ul class="nav-links">
             <li><a href="#goals">Цели</a></li>
             <li><a href="#lifecycle">Цикл</a></li>
-            <li><a href="#economics">Экономика</a></li>
+            <li><a href="#contracts">Договоры</a></li>
             <li><a href="#entities">Сущности</a></li>
             <li><a href="https://my.tk-soft.ru/page/proekty/ekonomika/" target="_blank" class="nav-cta">Вход в систему →</a></li>
         </ul>
@@ -738,64 +773,50 @@
     </div>
 </section>
 
-<!-- ЭКОНОМИКА -->
-<section class="section" id="economics">
+<!-- ДОГОВОРНЫЕ ДОКУМЕНТЫ -->
+<section class="section" id="contracts">
     <div class="container">
         <div class="section-header fade-in">
-            <h2 class="section-title">Экономика как сквозная сущность</h2>
-            <p class="section-subtitle">Создана как отдельный путь («Проекты» — «Экономика») для нужд финансовых служб и руководства.</p>
+            <h2 class="section-title">Договорные документы</h2>
+            <p class="section-subtitle">Единая система создания, учёта и контроля договоров, спецификаций и сопроводительной документации с единой кодификацией по всем проектам.</p>
         </div>
 
-        <div class="economics-banner fade-in">
-            <div>
-                <h3>Механика процесса</h3>
-                <p>Экономика создается автоматически при инициации Пресейл-активности. Финансовый директор получает мгновенное уведомление о появлении потенциального проекта, готовящегося к реализации.</p>
+        <div class="contracts-grid fade-in">
+            <div class="contract-card">
+                <h3><span class="blue-number">1</span> Договоры</h3>
+                <p>Основные и дополнительные соглашения фиксируются в единой системе с автоматической присвоением кода проекта. Полная история версий и изменений.</p>
             </div>
-            <div class="econ-features">
-                <div class="econ-feat">
-                    <div class="econ-feat-title">Автономность</div>
-                    <div class="econ-feat-desc">Создается без ручного ввода со стороны ФД</div>
-                </div>
-                <div class="econ-feat">
-                    <div class="econ-feat-title">Сквозной контроль</div>
-                    <div class="econ-feat-desc">Сопровождает проект до закрытия</div>
-                </div>
-                <div class="econ-feat">
-                    <div class="econ-feat-title">Консолидация</div>
-                    <div class="econ-feat-desc">Выгрузка в отчет единой цифрой</div>
-                </div>
-                <div class="econ-feat">
-                    <div class="econ-feat-title">Безопасность</div>
-                    <div class="econ-feat-desc">Строгое разграничение прав доступа</div>
-                </div>
+            <div class="contract-card">
+                <h3><span class="blue-number">2</span> Спецификации</h3>
+                <p>Технические спецификации и приложения к договорам связаны с проектом и доступны всем участникам в актуальном состоянии.</p>
+            </div>
+            <div class="contract-card">
+                <h3><span class="blue-number">3</span> Прочие документы</h3>
+                <p>Протоколы разногласий, акты, доп. соглашения — все типы договорной документации учитываются в единой реестровой структуре.</p>
             </div>
         </div>
 
-        <div style="margin-top: 60px;" class="fade-in">
-            <h3 style="font-size: 1.4rem; margin-bottom: 24px;">Матрица доступа к экономике проекта</h3>
-            <table class="access-table">
-                <tr>
-                    <th>Руководящий состав</th>
-                    <td>
-                        <span class="access-role">Полный доступ</span>
-                        Просмотр всех деталей, показателей и аналитики по экономике любого проекта.
-                    </td>
-                </tr>
-                <tr>
-                    <th>Инициаторы проектов</th>
-                    <td>
-                        <span class="access-role">Частичный доступ</span>
-                        Доступен просмотр только итогового результата по собственному проекту (в виде одной цифры).
-                    </td>
-                </tr>
-                <tr>
-                    <th>Остальные сотрудники</th>
-                    <td>
-                        <span class="access-role">Доступ закрыт</span>
-                        Сущность полностью скрыта от просмотра в целях конфиденциальности финансовых данных.
-                    </td>
-                </tr>
-            </table>
+        <div class="contracts-process fade-in">
+            <div class="contracts-process-step">
+                <div class="step-num">Шаг 01</div>
+                <h4>Создание</h4>
+                <p>Документ создаётся в системе с автоматической кодификацией, привязкой к проекту и назначением ответственного.</p>
+            </div>
+            <div class="contracts-process-step">
+                <div class="step-num">Шаг 02</div>
+                <h4>Согласование</h4>
+                <p>Маршрут согласования фиксирует все этапы рассмотрения и визирования внутри компании.</p>
+            </div>
+            <div class="contracts-process-step">
+                <div class="step-num">Шаг 03</div>
+                <h4>Контроль подписания</h4>
+                <p>Статус подписания отслеживается в реальном времени. Система уведомляет об истечении сроков и ожидающих действиях.</p>
+            </div>
+            <div class="contracts-process-step">
+                <div class="step-num">Шаг 04</div>
+                <h4>Поступление оригиналов</h4>
+                <p>Фиксируется факт и дата получения оригиналов документов. Контроль задолженностей по возврату.</p>
+            </div>
         </div>
     </div>
 </section>
