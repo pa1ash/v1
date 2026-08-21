@@ -487,6 +487,78 @@
             line-height: 1.5;
         }
 
+        /* ========== REPORTING ========== */
+        .reporting-intro {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        .reporting-intro-text p {
+            color: var(--text-gray);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .reporting-reports {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .report-item {
+            background: var(--bg-main);
+            padding: 28px 24px;
+        }
+
+        .report-item-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .report-item-name {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .report-item-desc {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        .reporting-principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .principle-card {
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        .principle-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .principle-card p {
+            font-size: 0.88rem;
+            color: var(--text-gray);
+        }
+
         /* ========== ENTITIES ========== */
         .entities-wrapper {
             display: grid;
@@ -617,7 +689,7 @@
 
         /* ========== РЕСПОНСИВ ========== */
         @media (max-width: 992px) {
-            .hero-content, .codification-layout, .entities-wrapper {
+            .hero-content, .codification-layout, .entities-wrapper, .reporting-intro {
                 grid-template-columns: 1fr;
             }
             .hero-text h1 { font-size: 2.8rem; }
@@ -625,12 +697,14 @@
             .lifecycle-grid { grid-template-columns: 1fr; }
             .contracts-grid { grid-template-columns: 1fr; }
             .contracts-process { grid-template-columns: 1fr 1fr; }
+            .reporting-principles { grid-template-columns: 1fr; }
             .access-table th, .access-table td { display: block; width: 100%; }
             .access-table th { border-bottom: none; padding-bottom: 8px; }
         }
 
         @media (max-width: 600px) {
             .contracts-process { grid-template-columns: 1fr; }
+            .reporting-reports { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -648,6 +722,7 @@
             <li><a href="#lifecycle">Цикл</a></li>
             <li><a href="#contracts">Договоры</a></li>
             <li><a href="#entities">Сущности</a></li>
+            <li><a href="#reporting">Отчётность</a></li>
             <li><a href="https://my.tk-soft.ru/page/proekty/ekonomika/" target="_blank" class="nav-cta">Вход в систему →</a></li>
         </ul>
     </div>
@@ -783,16 +858,16 @@
 
         <div class="contracts-grid fade-in">
             <div class="contract-card">
-                <h3><span class="blue-number">1</span> Договоры</h3>
-                <p>Основные и дополнительные соглашения фиксируются в единой системе с автоматической присвоением кода проекта. Полная история версий и изменений.</p>
+                <h3><span class="blue-number">1</span> Договорные документы</h3>
+                <p>Основные и дополнительные соглашения фиксируются в единой системе с автоматическим присвоением кода проекта. Полная история версий и изменений.</p>
             </div>
             <div class="contract-card">
-                <h3><span class="blue-number">2</span> Спецификации</h3>
-                <p>Технические спецификации и приложения к договорам связаны с проектом и доступны всем участникам в актуальном состоянии.</p>
+                <h3><span class="blue-number">2</span> Доверенности</h3>
+                <p>Доверенности на подписание, представление интересов и получение документов хранятся в единой базе с контролем сроков действия.</p>
             </div>
             <div class="contract-card">
-                <h3><span class="blue-number">3</span> Прочие документы</h3>
-                <p>Протоколы разногласий, акты, доп. соглашения — все типы договорной документации учитываются в единой реестровой структуре.</p>
+                <h3><span class="blue-number">3</span> Корреспонденция</h3>
+                <p>Входящая и исходящая деловая переписка фиксируется в привязке к проекту с единой нумерацией и контролем ответов.</p>
             </div>
         </div>
 
@@ -860,6 +935,66 @@
                     <span class="entity-item">Формирование отчета</span>
                     <span class="entity-item">Контроль дедлайнов</span>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ЕДИНАЯ ОТЧЁТНОСТЬ -->
+<section class="section section-alt" id="reporting">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">Единая отчётность</h2>
+            <p class="section-subtitle">Все ключевые отчёты формируются непосредственно в Битрикс24 — без выгрузок в Excel и ручной сборки. Данные актуальны в реальном времени.</p>
+        </div>
+
+        <div class="reporting-intro fade-in">
+            <div class="reporting-intro-text">
+                <p>Система отчётности построена на принципе единого источника данных: каждый показатель попадает в отчёт ровно один раз — в момент фиксации события в системе. Отчёты доступны руководству в режиме реального времени без участия исполнителей.</p>
+                <p>Разграничение доступа обеспечивает конфиденциальность финансовых данных: каждый сотрудник видит только ту часть информации, которая соответствует его роли.</p>
+                <div class="alert-box">
+                    <div class="alert-content">
+                        <strong>Принцип «одной цифры»</strong>
+                        Руководитель получает итоговый показатель по проекту без необходимости вручную агрегировать данные из разных источников.
+                    </div>
+                </div>
+            </div>
+            <div class="reporting-reports">
+                <div class="report-item">
+                    <div class="report-item-label">Проекты</div>
+                    <div class="report-item-name">Портфель проектов</div>
+                    <div class="report-item-desc">Сводный статус всех активных проектов по стадиям</div>
+                </div>
+                <div class="report-item">
+                    <div class="report-item-label">Финансы</div>
+                    <div class="report-item-name">Экономика проектов</div>
+                    <div class="report-item-desc">Плановые и фактические показатели по каждому проекту</div>
+                </div>
+                <div class="report-item">
+                    <div class="report-item-label">Логистика</div>
+                    <div class="report-item-name">Статус поставок</div>
+                    <div class="report-item-desc">Контроль сроков и состояния доставки оборудования</div>
+                </div>
+                <div class="report-item">
+                    <div class="report-item-label">Торги</div>
+                    <div class="report-item-name">Тендерная активность</div>
+                    <div class="report-item-desc">Сроки подачи, статусы и итоги тендерных процедур</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reporting-principles fade-in">
+            <div class="principle-card">
+                <h4>Единый источник</h4>
+                <p>Данные вносятся один раз — в момент события. Никакого дублирования и ручной сборки сводных таблиц.</p>
+            </div>
+            <div class="principle-card">
+                <h4>Реальное время</h4>
+                <p>Отчёты обновляются мгновенно при любом изменении в системе. Руководство всегда видит актуальную картину.</p>
+            </div>
+            <div class="principle-card">
+                <h4>Ролевой доступ</h4>
+                <p>Каждый видит только свои данные. Финансовые показатели скрыты от сотрудников, не имеющих соответствующих прав.</p>
             </div>
         </div>
     </div>
